@@ -29,8 +29,8 @@ def optimize_printing(print_jobs: List[Dict], constraints: Dict) -> Dict:
             grouped_jobs.append(current_group)
             current_group = [job['id']]
             current_volume = job['volume']
-            total_time += max(job['print_time'], total_time)
-    
+            total_time += job['print_time'] 
+
     if current_group:
         grouped_jobs.append(current_group)
 
@@ -38,6 +38,7 @@ def optimize_printing(print_jobs: List[Dict], constraints: Dict) -> Dict:
         "print_order": [job_id for group in grouped_jobs for job_id in group],
         "total_time": total_time
     }
+
 
 def test_printing_optimization():
     test1_jobs = [
